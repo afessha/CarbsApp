@@ -7,15 +7,16 @@ app.get("/", function(req, res) {
   console.log("The server is rrunning at port " + port);
 });
 
+//Route to handle the path (/home)
+app.get("/home", function(req, res) {
+  res.sendFile(path.join(__dirname + "/home.html"));
+});
+
 //Route to handle the path (/food)
 app.get("/food", function(req, res) {
   res.sendFile(path.join(__dirname + "/food.html"));
 });
 
-//Route to handle the path (/home)
-app.get("/home", function(req, res) {
-  res.send("home");
-});
 //Route to handle the path (/login)
 app.get("/login", function(req, res) {
   res.sendFile(path.join(__dirname + "/login.html"));

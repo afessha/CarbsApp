@@ -1,8 +1,13 @@
+var mongodb = require("mongodb").MongoClient;
+var url = "mongodb+srv://awet:Shirba94@cluster0-ulesp.mongodb.net/carbsDB?retryWrites=true";
 var express = require("express");
 var path = require("path");
 var app = express();
 var port = process.env.PORT || 8080;
 app.use(express.static("public"));
+app.use("/", function (req,res) {
+  
+})
 app.get("/", function(req, res) {
   res.send("Hello my server is working");
   console.log("The server is rrunning at port " + port);

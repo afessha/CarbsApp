@@ -9,13 +9,20 @@ var path = require("path");
 var app = express();
 var port = process.env.PORT || 8080;
 //Connecting to my remote my sql db
-var DB = mysql.createConnection({
-  host: "remotemysql.com",
-  user: "bupFWhT8t5",
-  password: "Hta0PLrUi5",
-  database: "bupFWhT8t5",
-  port: 3306
-})
+app.use("/", function(req, res, next) {
+  var con = mysql.createConnection({
+    host: "remotemysql.com",
+    user: "bupFWhT8t5",
+    password: "HtaOPLrUi5",
+    database: "bupFWhT8t5",
+    port: 3306
+  });
+  con.query("SELECT * FROM mytable", function(err, rows) {
+    if (err) throw err;
+    console.log(rows[0].name + " " + rows[0].nutritionper100gsugars);
+  });
+  next();
+});
 app.use(express.static("public"));
 //posting
 app.post("/users", urlencodedParser, function(req, res) {
@@ -40,6 +47,21 @@ app.post("/users", urlencodedParser, function(req, res) {
       if (err) throw err;
       console.log("Data has been added");
     });
+  });
+});
+
+//Route for querying all food types
+app.get("/foods", function(req, res) {
+  var con = mysql.createConnection({
+    host: "remotemysql.com",
+    user: "bupFWhT8t5",
+    password: "HtaOPLrUi5",
+    database: "bupFWhT8t5",
+    port: 3306
+  });
+  con.query("SELECT * FROM mytable limit 10", function(err, result) {
+    if (err) throw err;
+    res.json(result);
   });
 });
 app.get("/", function(req, res) {

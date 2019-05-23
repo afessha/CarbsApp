@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var elems = document.querySelectorAll(".sidenav");
-  var instances = M.Sidenav.init(elems, options);
-});
+function handleSuccess() {}
+function handleError() {}
+
+//create an XHR object
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "/foods");
+xhr.onload = handleSuccess;
+xhr.onerror = handleError;
+xhr.send();

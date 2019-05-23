@@ -2,13 +2,21 @@ var mongoclient = require("mongodb").MongoClient;
 var url =
   "mongodb+srv://awet:Shirba94@cluster0-ulesp.mongodb.net/carbsDB?retryWrites=true";
 var express = require("express");
+var mysql = require("mysql");
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var path = require("path");
 var app = express();
 var port = process.env.PORT || 8080;
+//Connecting to my remote my sql db
+var DB = mysql.createConnection({
+  host: "remotemysql.com",
+  user: "bupFWhT8t5",
+  password: "Hta0PLrUi5",
+  database: "bupFWhT8t5",
+  port: 3306
+})
 app.use(express.static("public"));
-
 //posting
 app.post("/users", urlencodedParser, function(req, res) {
   res.send("Data recieved");

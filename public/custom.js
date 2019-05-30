@@ -19,11 +19,20 @@ function handleSuccess() {
 
       var item4 = document.createElement("p");
       item4.textContent = "Sugar " + data[item]["nutritionper100gsugars"];
+
+      var item5 = document.createElement("a");
+      item5.href = "/food";
+      item5.className += "secondary-content";
+      var item5_child = document.createElement("i");
+      item5_child.className = "material-icons";
+      item5_child.innerHTML = "grade";
+      item5.appendChild(item5_child);
+
       li.appendChild(item1);
       li.appendChild(item2);
       li.appendChild(item3);
       li.appendChild(item4);
-
+      li.appendChild(item5);
       var result = document.getElementById("foods");
       result.appendChild(li);
     }

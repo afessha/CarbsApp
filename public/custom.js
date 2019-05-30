@@ -1,26 +1,32 @@
 function handleSuccess() {
   var data = JSON.parse(this.responseText);
   for (var item in data) {
-    var li = document.createElement("li");
-    li.className += "collection-item avatar";
+    if (data.hasOwnProperty(item)) {
+      var li = document.createElement("li");
+      li.className += "collection-item avatar";
 
-    var item1 = document.createElement("li");
-    item1.className += "material-icons circle green";
-    item1.textContent = "brightness_1";
+      var item1 = document.createElement("li");
+      item1.className += "material-icons circle green";
+      item1.textContent = "brightness_1";
 
-    var item2 = document.createElement("p");
-    item2.className += "Title";
-    item2.textContent = data[item]["name"];
+      var item2 = document.createElement("p");
+      item2.className += "Title";
+      item2.textContent = data[item]["name"];
 
-    var item3 = document.createElement("p");
-    item3.textContent =
-      "Carbohydrate" + data[item]["nutritionper100gcarbohydrate"];
-    li.appendChild(item1);
-    li.appendChild(item2);
-    li.appendChild(item3);
+      var item3 = document.createElement("p");
+      item3.textContent =
+        "Carbohydrate " + data[item]["nutritionper100gcarbohydrate"];
 
-    var result = document.getElementById("foods");
-    result.appendChild(li);
+      var item4 = document.createElement("p");
+      item4.textContent = "Sugar " + data[item]["nutritionper100gsugars"];
+      li.appendChild(item1);
+      li.appendChild(item2);
+      li.appendChild(item3);
+      li.appendChild(item4);
+
+      var result = document.getElementById("foods");
+      result.appendChild(li);
+    }
   }
 }
 function handleError() {

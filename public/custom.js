@@ -14,15 +14,23 @@ function handleSuccess() {
       item2.textContent = data[item]["name"];
 
       var item3 = document.createElement("p");
-      item3.textContent =
-        "Carbohydrate " + data[item]["nutritionper100gcarbohydrate"];
+      item3.textContent = data[item]["nutritionper100gcarbohydrate"] + " Carbs";
 
       var item4 = document.createElement("p");
-      item4.textContent = "Sugar " + data[item]["nutritionper100gsugars"];
+      item4.textContent = data[item]["nutritionper100gsugars"] + " Sugar";
 
       var item5 = document.createElement("a");
       item5.href = "/food";
       item5.className += "secondary-content";
+      item5.setAttribute("data-name", data[item]["name"]);
+      item5.setAttribute("data-fat", data[item]["nutritionper100gfat"]);
+      item5.setAttribute(
+        "data-carbs",
+        data[item]["nutritionper100gcarbohydrate"]
+      );
+      item5.setAttribute("data-sugar", data[item]["nutritionper100gsugars"]);
+      item5.setAttribute("data-protein", data[item]["nutritionper100gprotein"]);
+      
       var item5_child = document.createElement("i");
       item5_child.className = "material-icons";
       item5_child.innerHTML = "grade";

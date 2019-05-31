@@ -9,20 +9,20 @@ var path = require("path");
 var app = express();
 var port = process.env.PORT || 8080;
 //Connecting to my remote my sql db
-app.use("/", function(req, res, next) {
-  var con = mysql.createConnection({
-    host: "remotemysql.com",
-    user: "bupFWhT8t5",
-    password: "HtaOPLrUi5",
-    database: "bupFWhT8t5",
-    port: 3306
-  });
-  con.query("SELECT * FROM mytable", function(err, rows) {
-    if (err) throw err;
-    console.log(rows[0].name + " " + rows[0].nutritionper100gsugars);
-  });
-  next();
-});
+// app.use("/", function(req, res, next) {
+//   var con = mysql.createConnection({
+//     host: "remotemysql.com",
+//     user: "bupFWhT8t5",
+//     password: "HtaOPLrUi5",
+//     database: "bupFWhT8t5",
+//     port: 3306
+//   });
+//   con.query("SELECT * FROM mytable", function(err, rows) {
+//     if (err) throw err;
+//     console.log(rows[0].name + " " + rows[0].nutritionper100gsugars);
+//   });
+//   next();
+// });
 app.use(express.static("public"));
 //posting
 app.post("/users", urlencodedParser, function(req, res) {
@@ -54,9 +54,9 @@ app.post("/users", urlencodedParser, function(req, res) {
 app.get("/foods", function(req, res) {
   var con = mysql.createConnection({
     host: "remotemysql.com",
-    user: "bupFWhT8t5",
-    password: "HtaOPLrUi5",
-    database: "bupFWhT8t5",
+    user: "SW3sIRnA1g",
+    password: "AHKFM2IOvX",
+    database: "SW3sIRnA1g",
     port: 3306
   });
   con.query("SELECT * FROM mytable limit 10", function(err, result) {

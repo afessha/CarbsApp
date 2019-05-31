@@ -3,6 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" contant="width=device-width, inital-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Nutrients", "amount per 100g"],
+          ["Carb", parseFloat(sessionStorage.getItem("carb"))],
+          ["Sugar", parseFloat(sessionStorage.getItem("sugar"))],
+          ["Fat", parseFloat(sessionStorage.getItem("fat"))],
+          ["Protein", parseFloat(sessionStorage.getItem("protein"))],
+          ["Energy", parseFloat(sessionStorage.getItem("energy"))]
+        ]);
+
+        var options = {
+          title: sessionStorage.getItem("food-name"),
+          is3D: true
+        };
+
+        var chart = new google.visualization.PieChart(
+          document.getElementById("piechart")
+        );
+
+        chart.draw(data, options);
+      }
+    </script>
     <!--Import Google Icon Font-->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -41,16 +71,19 @@
       <li><a href="/register">Register</a></li>
       <li><a href="/login">Login</a></li>
     </ul>
-    <h2>Food</h2>
 
-    <!--Jquery loaded before materlize-->
+    <h4>Food</h4>
+
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <!-- Jquery loaded before materlize -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="custom.js"></script>
+    <script src="readSession.js"></script>
+
     <script>
       $(document).ready(function() {
         //Initalizing the mobile collapse navbar

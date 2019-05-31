@@ -1,3 +1,4 @@
+var food = {};
 function handleSuccess() {
   var data = JSON.parse(this.responseText);
   for (var item in data) {
@@ -21,7 +22,7 @@ function handleSuccess() {
 
       var item5 = document.createElement("a");
       item5.href = "/food";
-      item5.className += "secondary-content";
+      item5.className += "secondary-content food-item";
       item5.setAttribute("data-name", data[item]["name"]);
       item5.setAttribute("data-fat", data[item]["nutritionper100gfat"]);
       item5.setAttribute(
@@ -30,7 +31,8 @@ function handleSuccess() {
       );
       item5.setAttribute("data-sugar", data[item]["nutritionper100gsugars"]);
       item5.setAttribute("data-protein", data[item]["nutritionper100gprotein"]);
-      
+      item5.setAttribute("data-energy", data[item]["nutritionper100genergy"]);
+
       var item5_child = document.createElement("i");
       item5_child.className = "material-icons";
       item5_child.innerHTML = "grade";
@@ -41,11 +43,29 @@ function handleSuccess() {
       li.appendChild(item3);
       li.appendChild(item4);
       li.appendChild(item5);
+
       var result = document.getElementById("foods");
       result.appendChild(li);
+
+      if (item5.addEventListener) {
+        item5.addEventListener("click", function(event) {
+          var target = event.currentTarget;
+          sessionStorage.clear();
+          sessionStorage.setItem("food-name", target.getAttribute("data-name"));
+          sessionStorage.setItem("fat", target.getAttribute("data-fat"));
+          sessionStorage.setItem("carb", target.getAttribute("data-carbs"));
+          sessionStorage.setItem("sugar", target.getAttribute("data-sugar"));
+          sessionStorage.setItem(
+            "protein",
+            target.getAttribute("data-protein")
+          );
+          sessionStorage.setItem("energy", target.getAttribute("data-energy"));
+        });
+      }
     }
   }
 }
+
 function handleError() {
   //Function to handle the request if it fails/unsccesfull
   var h5 = document.getElementById("list");

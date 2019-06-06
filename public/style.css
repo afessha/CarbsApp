@@ -1,3 +1,10 @@
 h4 {
   text-align: center;
 }
+footer {
+  background-color: #ee6e73;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 25px;
+}

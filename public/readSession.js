@@ -1,19 +1,18 @@
-// window.onload = function() {
-//   document.getElementById("name").innerHTML = sessionStorage.getItem(
-//     "food-name"
-//   );
+window.onload = function() {
+  document.getElementById("name").innerHTML =
+    "Nutrients per 100g 0f " + sessionStorage.getItem("food-name");
 
-//   var fat = sessionStorage.getItem("fat");
-//   document.getElementById("fat").innerHTML = fat;
+  var fat = "Fat: " + sessionStorage.getItem("fat");
+  document.getElementById("fat").innerHTML = fat;
 
-//   var carb = sessionStorage.getItem("carb");
-//   document.getElementById("carb").innerHTML = carb;
+  var carb = "Carbs: " + sessionStorage.getItem("carb");
+  document.getElementById("carb").innerHTML = carb;
 
-//   var sugar = sessionStorage.getItem("sugar");
-//   document.getElementById("sugar").innerHTML = sugar;
+  var sugar = "Sugar: " + sessionStorage.getItem("sugar");
+  document.getElementById("sugar").innerHTML = sugar;
 
-//   var protein = sessionStorage.getItem("protein");
-//     document.getElementById("protein").innerHTML = protein;
-//     var protein = sessionStorage.getItem("energy");
-//     document.getElementById("energy").innerHTML = protein;
-// };
+  var protein = "Protein: " + sessionStorage.getItem("protein");
+  document.getElementById("protein").innerHTML = protein;
+  var energy = "Energy: " + sessionStorage.getItem("energy");
+  document.getElementById("energy").innerHTML = energy;
+};
